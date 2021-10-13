@@ -5,7 +5,7 @@ class LoginsController < ApplicationController
   def create
     if user = authenticate_with_google
       cookies.signed[:user_id] = user.id
-      redirect_to user
+      redirect_to users_path
     else
       redirect_to login_path, alert: 'authentication_failed'
     end

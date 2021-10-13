@@ -1,0 +1,10 @@
+<%= form_with model: @user, multipart: true do |form| %>
+  <div>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.select :role, User.roles.keys, selected: @user.role %>
+  </div>
+
+  <%= submit_tag "Submit" %>
+<% end %>
