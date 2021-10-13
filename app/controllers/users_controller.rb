@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authenticate
   before_action :find_user, except: %w[index new create]
 
   def index
-    @users = User.all
+    @users = if_admins? ? User.all : User.where(id: current_user.id)
   end
 
   def new
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    return unless user.Customer_support?
+    return unless @user.Customer_support?
 
     if @user.save
       redirect_to @user
@@ -58,6 +59,10 @@ class UsersController < ApplicationController
 
   def can_update?
     @user.Super_Admin? || @user.Admin?
+  end
+
+  def if_admins?
+    current_user.Super_Admin? || current_user.Admin?
   end
 end
 

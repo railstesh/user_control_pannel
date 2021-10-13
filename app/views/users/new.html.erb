@@ -1,4 +1,5 @@
 <div class="jumbotron text-center">
-  <h4> Create New User </h4>
-  <%= render "form", user: @user %>
+  <div class="container">
+    <%= google_sign_in_button 'Sign in with Google account', proceed_to: create_login_url , class: 'btn btn-primary'%>
+  </div>
 </div>

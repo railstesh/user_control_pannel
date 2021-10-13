@@ -5,4 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.find_or_create_by(name: 'test_user', google_id: '103476710972200773544')
+
+# Seed for Super Admin User
+User.find_or_create_by(name: 'test_user', google_id: '103476710972200773544', role: 1)
