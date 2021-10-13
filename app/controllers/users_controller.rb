@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    return if current_user.Customer_support?
 
-    return unless @user.Customer_support?
+    @user = User.new(user_params)
 
     if @user.save
       redirect_to @user
@@ -22,15 +22,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
-    return unless can_update?
+    return unless if_admins?
   end
 
   def update
-    return unless can_update?
+    return unless if_admins?
 
     if @user.update(user_params)
       redirect_to @user
@@ -40,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    return unless @user.Super_Admin?
+    return unless current_user.Super_Admin?
 
     @user.destroy
 
@@ -57,12 +56,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :role, :google_id)
   end
 
-  def can_update?
-    @user.Super_Admin? || @user.Admin?
-  end
-
   def if_admins?
     current_user.Super_Admin? || current_user.Admin?
   end
 end
-
