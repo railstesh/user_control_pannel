@@ -19,3 +19,7 @@
 - By Default when User login using google SSO user with role 'customer_support' will create
 
 - Google SSO gem used : https://github.com/basecamp/google_sign_in
+
+- Gem used for xlsx : gem 'roo', '~> 2.8', '>= 2.8.3'
+
+- Rake task to import xlsx : ```bundle exec rails import:data``` (This will import provided xlsx to database)
