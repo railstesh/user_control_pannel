@@ -14,30 +14,6 @@ RSpec.describe "Users", type: :request do
         expect(response.code).to eql '200'
       end
     end
-
-    context 'Post Create' do
-      it 'cannot access' do
-        allow_any_instance_of(ApplicationController).to receive(:user_signed_in?).and_return(true)
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(customer_user)
-
-        post users_path, params: { user: { name: 'test', google_id: '12344578' } }
-        expect(response.code).to eql '204'
-      end
-    end
-  end
-
-  describe 'Designers' do
-    let!(:designer) { FactoryBot.create(:user, :Designers) }
-
-    context 'Post create' do
-      it 'can only create' do
-        allow_any_instance_of(ApplicationController).to receive(:user_signed_in?).and_return(true)
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(designer)
-
-        post users_path, params: { user: { name: 'test-1', google_id: '12344578', role: 'Designers' } }
-        expect(response.code).to eql '302'
-      end
-    end
   end
 
   describe 'Admin' do
@@ -53,21 +29,13 @@ RSpec.describe "Users", type: :request do
   end
 
   describe 'Super Admin' do
-    let!(:super_user) { FactoryBot.create(:user, :Super_Admin) }
+    let!(:super_user) { FactoryBot.create(:user, :SuperAdmin) }
     before(:each) do
       allow_any_instance_of(ApplicationController).to receive(:user_signed_in?).and_return(true)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(super_user)
     end
 
     context 'Can perform all CRUD operations' do
-      it 'Can create User' do
-        allow_any_instance_of(ApplicationController).to receive(:user_signed_in?).and_return(true)
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(super_user)
-
-        post users_path, params: { user: { name: 'test-2', google_id: '12344578', role: 'Admin' } }
-        expect(response.code).to eql '302'
-      end
-
       it 'can view all users' do
         get users_path
         expect(response).to be_successful

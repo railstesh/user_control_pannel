@@ -4,16 +4,16 @@ FactoryBot.define do
     google_id { '103476710972200773544' }
   end
 
-  trait :Super_Admin do
-    role { 'Super Admin' }
+  trait :SuperAdmin do
+    role { 'SuperAdmin' }
   end
 
   trait :Admin do
     role { 'Admin' }
   end
 
-  trait :Customer_support do
-    role { 'Customer support' }
+  trait :CustomerSupport do
+    role { 'CustomerSupport' }
   end
 
   trait :Designers do

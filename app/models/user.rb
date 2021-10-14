@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   enum role: {
-    'Customer support': 0,
-    'Super Admin': 1,
+    CustomerSupport: 0,
+    SuperAdmin: 1,
     Admin: 2,
     Designers: 3
   }

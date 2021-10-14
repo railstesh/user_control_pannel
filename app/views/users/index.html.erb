@@ -2,21 +2,8 @@
   <%= button_to 'Logout', logout_path, :method => :delete %>
   <br>
   <div>
-    <% if current_user.Customer_support? %>
-      <h2> Role: Customer Support </h2>
-    <% elsif current_user.Super_Admin? %>
-      <h2> Role: Super Admin </h2>
-    <% elsif current_user.Admin? %>
-      <h2> Role: Admin </h2>
-    <% elsif current_user.Designers? %>
-      <h2> Role: Designers </h2>
-    <% end %>
+    <h2> Role: <%= user_role %> </h2>
   </div>
-  <% unless current_user.Customer_support? %>
-    <div>
-      <%= link_to "Create User", new_user_path %>
-    </div>
-  <% end %>
   <table class="table">
     <thead>
       <th>Name</th>
@@ -32,10 +19,10 @@
           </td>
           <td>
             <%= link_to "Show", user_path(user) %>
-            <% if current_user.Super_Admin? || current_user.Admin? %>
+            <% if current_user.SuperAdmin? || current_user.Admin? %>
               <%= link_to "Edit", edit_user_path(user) %>
             <% end %>
-            <% if current_user.Super_Admin? %>
+            <% if current_user.SuperAdmin? %>
               <%= link_to "Destroy", user_path(user),
                     method: :delete,
                     data: { confirm: "Are you sure?" } %>
