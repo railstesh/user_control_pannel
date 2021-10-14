@@ -52,14 +52,12 @@ ActiveRecord::Schema.define(version: 2021_10_14_133906) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.integer "customer_id", null: false
+    t.integer "customer_id"
     t.string "name", null: false
     t.string "email", null: false
     t.string "group"
-    t.bigint "address_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_customers_on_address_id"
   end
 
   create_table "leaf_categories", force: :cascade do |t|
@@ -75,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_133906) do
     t.string "order_id", null: false
     t.string "ref_order_no"
     t.date "purchase_date"
-    t.string "status"
+    t.integer "status"
     t.string "coupon_code"
     t.bigint "product_id"
     t.bigint "customer_id"
