@@ -34,32 +34,32 @@
     </div>
   </div>
 
-  <table class="table">
-    <thead>
-      <th>Name</th>
-      <th>Role</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-          <td>
-            <%= user.role %>
-          </td>
-          <td>
-            <%= link_to "Show", user_path(user) %>
-            <% if current_user.SuperAdmin? || current_user.Admin? %>
+  <% if current_user.SuperAdmin? || current_user.Admin? %>
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Role</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td>
+              <%= user.role %>
+            </td>
+            <td>
+              <%= link_to "Show", user_path(user) %>
               <%= link_to "Edit", edit_user_path(user) %>
-            <% end %>
-            <% if current_user.SuperAdmin? %>
-              <%= link_to "Destroy", user_path(user),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+              <% if current_user.SuperAdmin? %>
+                <%= link_to "Destroy", user_path(user),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :find_user, except: %w[index new create]
 
   def index
-    @users = admin_users? ? User.all : User.where(id: current_user.id)
+    @users = User.all
   end
 
   def show; end
