@@ -57,6 +57,7 @@ group :test do
   gem 'rspec-rails', '~> 4.0'
   gem 'rspec-core', '~> 3.0'
   gem 'rexml', '~> 3.2', '>= 3.2.4'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
