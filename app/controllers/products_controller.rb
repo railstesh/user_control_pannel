@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    return unless current_user.CustomerSupport?
+    return if current_user.CustomerSupport?
 
     @product = Product.new(product_params)
 

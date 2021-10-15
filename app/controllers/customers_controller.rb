@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    return unless current_user.CustomerSupport?
+    return if current_user.CustomerSupport?
 
     @customer = Customer.new(customer_params)
 
