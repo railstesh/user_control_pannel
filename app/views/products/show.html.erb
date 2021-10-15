@@ -1,12 +1,15 @@
-<div class="container text-center">
-  <h2>Product Details</h2>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <h5>Product ID: <%= @product.product_id %></h4>
-      <h5>Name: <%= @product.name %></h4>
-      <h5>SKU: <%= @product.sku %></h4>
-      <h5>Weight: <%= @product.weight %></h4>
-      <h5>Size: <%= @product.size %></h4>
+<div class="container">
+  <%= button_to 'Back', products_path, method: :get %>
+  <div class="container text-center">
+    <h2>Product Details</h2>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5>Product ID: <%= @product.product_id %></h5>
+        <h5>Name: <%= @product.name %></h5>
+        <h5>SKU: <%= @product.sku %></h5>
+        <h5>Weight: <%= @product.weight %></h5>
+        <h5>Size: <%= @product.size %></h5>
+      </div>
     </div>
   </div>
-</div>
+</hdiv>

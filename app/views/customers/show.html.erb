@@ -1,11 +1,14 @@
-<div class="container text-center">
-  <h2>Customer Details</h2>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <h5>Customer ID: <%= @customer.customer_id %></h4>
-      <h5>Name: <%= @customer.name %></h4>
-      <h5>Email: <%= @customer.email %></h4>
-      <h5>Group: <%= @customer.group %></h4>
+<div class="container">
+  <%= button_to 'Back', customers_path, method: :get %>
+  <div class="container text-center">
+    <h2>Customer Details</h2>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5>Customer ID: <%= @customer.customer_id %></h5>
+        <h5>Name: <%= @customer.name %></h5>
+        <h5>Email: <%= @customer.email %></h5>
+        <h5>Group: <%= @customer.group %></h5>
+      </div>
     </div>
   </div>
 </div>

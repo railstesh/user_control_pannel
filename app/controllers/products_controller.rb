@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
   end
 
   def create
+    return unless current_user.CustomerSupport?
+
     @product = Product.new(product_params)
 
     if @product.save
@@ -24,10 +26,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    return unless admin_users?
+
     @product = Product.find(params[:id])
   end
 
   def update
+    return unless admin_users?
+
     @product = Product.find(params[:id])
 
     if @product.update(product_params)
@@ -38,6 +44,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    return unless current_user.SuperAdmin?
+
     @product = Product.find(params[:id])
     @product.destroy
 

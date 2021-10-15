@@ -10,6 +10,8 @@ class CustomersController < ApplicationController
   end
 
   def create
+    return unless current_user.CustomerSupport?
+
     @customer = Customer.new(customer_params)
 
     if @customer.save
@@ -24,10 +26,14 @@ class CustomersController < ApplicationController
   end
 
   def edit
+    return unless admin_users?
+
     @customer = Customer.find(params[:id])
   end
 
   def update
+    return unless admin_users?
+
     @customer = Customer.find(params[:id])
 
     if @customer.update(customer_params)
@@ -38,6 +44,8 @@ class CustomersController < ApplicationController
   end
 
   def destroy
+    return unless current_user.SuperAdmin?
+
     @customer = Customer.find(params[:id])
     @customer.destroy
 
