@@ -1,0 +1,86 @@
+<table class="table table-bordered">
+  <thead>
+    <th>Order ID</th>
+    <th>Ref Order No</th>
+    <th>Purchase Date</th>
+    <th>Status</th>
+    <th>Coupon Code</th>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Product SKU</th>
+    <th>Product Size</th>
+    <th>Total Weight</th>
+    <th>Primary Category Id</th>
+    <th>Primary Category Name</th>
+    <th>Secondary Category Id</th>
+    <th>Secondary Category Name</th>
+    <th>Leaf Category Id</th>
+    <th>Leaf Category Name</th>
+    <th>Qty</th>
+    <th>Currency</th>
+    <th>Item Base Price</th>
+    <th>Item Price</th>
+    <th>Subtotal</th>
+    <th>Discount Amount</th>
+    <th>Tax Amount</th>
+    <th>Shipping Amount</th>
+    <th>Shipping Method</th>
+    <th>Region Date</th>
+    <th>Grand Total</th>
+    <th>Customer Id</th>
+    <th>Customer Name</th>
+    <th>Customer Email</th>
+    <th>Customer Group</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Postcode</th>
+    <th>Total Order</th>
+    <th>Total Revenue</th>
+    <th>Payment Method</th>
+  </thead>
+  <tbody>
+    <% @order_data.each do |order| %>
+      <tr>
+        <td><%= order.order_id %></td>
+        <td><%= order.ref_order_no %></td>
+        <td><%= order.purchase_date %> </td>
+        <td><%= order.status %> </td>
+        <td><%= order.coupon_code %> </td>
+        <td><%= order.product.product_id %> </td>
+        <td><%= order.product.name %></td>
+        <td><%= order.product.sku %></td>
+        <td><%= order.product.weight %></td>
+        <td><%= order.product.size %></td>
+        <td><%= order.product.category.primary_category_id %></td>
+        <td><%= order.product.category.primary_category_name %></td>
+        <td><%= order.product&.secondary_category&.secondary_category_id %></td>
+        <td><%= order.product&.secondary_category&.secondary_category_name %></td>
+        <td><%= order.product&.leaf_category&.leaf_category_id %></td>
+        <td><%= order.product&.leaf_category&.leaf_category_name %></td>
+        <td><%= order.billing.qty %></td>
+        <td><%= order.billing.currency %></td>
+        <td><%= order.billing.item_base_price %></td>
+        <td><%= order.billing.item_price %></td>
+        <td><%= order.billing.sub_total %></td>
+        <td><%= order.billing.discount_amount %></td>
+        <td><%= order.billing.tax_amount %></td>
+        <td><%= order.shipping.shipping_amount %></td>
+        <td><%= order.shipping.shipping_method %></td>
+        <td><%= order.shipping.region_date %></td>
+        <td><%= order.billing.grand_total %></td>
+        <td><%= order.customer.customer_id %></td>
+        <td><%= order.customer.name %></td>
+        <td><%= order.customer.email %></td>
+        <td><%= order.customer.group %></td>
+        <td><%= order.customer.address.city %></td>
+        <td><%= order.customer.address.state %></td>
+        <td><%= order.customer.address.country %></td>
+        <td><%= order.customer.address.postcode %></td>
+        <td><%= order.product.revenue.total_order %></td>
+        <td><%= order.product.revenue.total_revenue %></td>
+        <td><%= order.billing.payment_method %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

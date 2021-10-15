@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     # converts current_user to a boolean by negating the negation
     !!current_user
   end
+
+  def admin_users?
+    current_user.SuperAdmin? || current_user.Admin?
+  end
 end

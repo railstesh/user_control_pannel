@@ -39,8 +39,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :role, :google_id)
   end
-
-  def admin_users?
-    current_user.SuperAdmin? || current_user.Admin?
-  end
 end

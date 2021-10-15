@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :users
+  resources :users, :access_management, :products, :customers
 
   get 'login', to: 'logins#new'
   get 'login/create', to: 'logins#create', as: :create_login

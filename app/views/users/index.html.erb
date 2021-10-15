@@ -4,6 +4,9 @@
   <div>
     <h2> Role: <%= user_role %> </h2>
   </div>
+  <%= button_to 'Orders Data', access_management_index_path, method: :get, class: 'btn btn-info' %>
+  <%= button_to 'Create Customer', access_management_index_path, method: :get, class: 'btn btn-info' %>
+  <%= button_to 'Create Product', access_management_index_path, method: :get, class: 'btn btn-info' %>
   <table class="table">
     <thead>
       <th>Name</th>
