@@ -1,0 +1,28 @@
+<%= form_with model: @product, multipart: true do |form| %>
+  <div class="card">
+    <div class="card-body">
+      <div class="mb-3">
+        <%= form.label :product_id, 'Product ID' %>
+        <%= form.text_field :product_id %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :sku %>
+        <%= form.text_field :sku %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :weight %>
+        <%= form.text_field :weight %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :size %>
+        <%= form.text_field :size %>
+      </div>
+
+      <%= submit_tag "Submit" %>
+    </div>
+  </div>
+<% end %>

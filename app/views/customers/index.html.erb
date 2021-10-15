@@ -1,0 +1,30 @@
+<table class="table">
+    <thead>
+      <th>Customer ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Group</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.customer_id %></td>
+          <td><%= customer.name %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.group %></td>
+          <td>
+            <%= link_to "Show", customer_path(customer) %>
+            <% if current_user.SuperAdmin? || current_user.Admin? %>
+              <%= link_to "Edit", edit_customer_path(customer) %>
+            <% end %>
+            <% if current_user.SuperAdmin? %>
+              <%= link_to "Destroy", customer_path(customer),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

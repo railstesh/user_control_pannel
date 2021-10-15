@@ -4,9 +4,28 @@
   <div>
     <h2> Role: <%= user_role %> </h2>
   </div>
-  <%= button_to 'Orders Data', access_management_index_path, method: :get, class: 'btn btn-info' %>
-  <%= button_to 'Create Customer', access_management_index_path, method: :get, class: 'btn btn-info' %>
-  <%= button_to 'Create Product', access_management_index_path, method: :get, class: 'btn btn-info' %>
+  <div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-2">
+      <%= button_to 'Orders Data', access_management_index_path, method: :get, class: 'btn btn-info' %>
+    </div>
+    <div class="col-sm-2">
+      <%= button_to 'Create Customer', new_customer_path, method: :get, class: 'btn btn-info' %>
+    </div>
+    <div class="col-sm-2">
+      <%= button_to 'All Customer', customers_path, method: :get, class: 'btn btn-info' %>
+    </div>
+    <div class="col-sm-2">
+      <%= button_to 'Create Product', new_product_path, method: :get, class: 'btn btn-info' %>
+    </div>
+    <div class="col-sm-2">
+      <%= button_to 'All Product', products_path, method: :get, class: 'btn btn-info' %>
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+
   <table class="table">
     <thead>
       <th>Name</th>

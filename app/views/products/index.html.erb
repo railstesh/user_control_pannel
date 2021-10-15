@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <th>Product ID</th>
+    <th>Name</th>
+    <th>SKU</th>
+    <th>Weight</th>
+    <th>Size</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.product_id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.sku %></td>
+        <td><%= product.weight %></td>
+        <td><%= product.size %></td>
+        <td>
+          <%= link_to "Show", product_path(product) %>
+          <% if current_user.SuperAdmin? || current_user.Admin? %>
+            <%= link_to "Edit", edit_product_path(product) %>
+          <% end %>
+          <% if current_user.SuperAdmin? %>
+            <%= link_to "Destroy", product_path(product),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
